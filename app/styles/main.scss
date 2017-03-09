@@ -24,7 +24,7 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: none;
   margin-bottom: 10px;
 
   /* Make the masthead heading the same height as the navigation */
@@ -66,6 +66,19 @@ body {
     margin-top: 28px;
   }
 }
+
+// me/custom
+
+nav, .navbar.navbar-default {
+  background: white !important;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  .navbar-brand {
+    color: rgb(0, 172, 237);
+  }
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
