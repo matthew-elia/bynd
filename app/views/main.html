@@ -1,19 +1,15 @@
 <div class="jumbotron" ng-repeat="x in playlist">
   <div class="row">
-    <div class="col-xs-6">
-      <img class="img-responsive center-block" src="{{ x.snippet.thumbnails.default.url }}" />
+    <div class="col-xs-7">
+      <img class="img-responsive center-block" src="{{ x.snippet.thumbnails.high.url }}" />
     </div>
-  <div class="row text-left">
-    <div class="col-xs-6">
-      <div class="page-header">
-      <h1>{{ x.snippet.title }}</h1>
-        <h3 class="text-muted"> {{ x.snippet.publishedAt }} </h3>
-      </div>
-      <div class="page-content">
-        <p class="description-wrapper">
+    <div class="col-xs-5 text-left">
+      <h3>{{ x.snippet.title }}</h3>
+      <h6 class="text-muted"> {{ x.snippet.publishedAt }} </h6>
+      <hr />
+      <p class="description-wrapper">
         {{ x.snippet.description }}
-        </p>
-      </div>
+      </p>
     </div>
   </div>  
 </div>   
