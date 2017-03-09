@@ -74,9 +74,32 @@ nav, .navbar.navbar-default {
   border: none;
   border-radius: 0;
   margin-bottom: 0;
-  .navbar-brand {
-    color: rgb(0, 172, 237);
-  }
+}
+.navbar-brand {
+  color: rgb(0, 187, 222);
+  font-size: 50px;
+  padding: 0px !important;
+  position: absolute;
+  left: 48%;
+  right: 48%;
+  font-family: monospace;
+  letter-spacing: 33.3969px;
+  line-height: 0 !important;
+}
+
+.description-wrapper {
+    display: block;
+    height: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80%;
+    z-index: 1;
+    position: absolute;
+    font-size: 21px;
+}
+.jumbtotron {
+  background: 
 }
 
 

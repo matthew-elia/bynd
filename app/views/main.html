@@ -1,12 +1,19 @@
-<div class="row">
-  <div class="col-xs-7">
-    <img class="img-responsive" src="images/cuba.jpg">
-    <!-- <video width="320" height="240" controls>
-      <source src="" type="video/mp4">
-      <source src="" type="video/ogg">
-    </video> -->
-  </div>
-  <div class="col-xs-5">
-    <p>Dead camera towards vinyl face forwards tube beef noodles pre-knife motion Tokyo industrial grade weathered meta-footage nodality grenade. Realism rifle dolphin pistol towards smart-disposable into DIY. Media neural nodality bomb warehouse Legba artisanal fetishism 8-bit post-city. Kowloon boat tower face forwards shoes decay motion sub-orbital voodoo god papier-mache drugs. Assault advert rain dead city semiotics savant sub-orbital ablative. Nodal point realism geodesic A.I. BASE jump-space grenade wonton soup.</p>
-  </div>
-</div>  
+<div class="jumbotron" ng-repeat="x in playlist">
+  <div class="row">
+    <div class="col-xs-6">
+      <img class="img-responsive center-block" src="{{ x.snippet.thumbnails.default.url }}" />
+    </div>
+  <div class="row text-left">
+    <div class="col-xs-6">
+      <div class="page-header">
+      <h1>{{ x.snippet.title }}</h1>
+        <h3 class="text-muted"> {{ x.snippet.publishedAt }} </h3>
+      </div>
+      <div class="page-content">
+        <p class="description-wrapper">
+        {{ x.snippet.description }}
+        </p>
+      </div>
+    </div>
+  </div>  
+</div>   
