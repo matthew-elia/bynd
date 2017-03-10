@@ -1,31 +1,33 @@
 <div id="MainViewWrapper" class="container-fluid" ng-controller="MainCtrl">
   <div class="row">
-    <!-- content -->
     <div class="col-sm-10 col-sm-offset-1 col-xs-12">
-      <div class="well" ng-repeat="vi in videoItems">
+      
+      <div class="well" ng-repeat="vi in videoItems | limitTo: 17">
         <div class="row">
-          <div class="col-sm-5 col-sm-push-7 col-xs-12">
-
-            <!-- TITLE anchor tag. submits param(videoId), routes to details page  -->
-            <a ng-click="apiCallById(vi.contentDetails.videoId)"> 
-              <h2 class="videoItemTitle">{{ vi.snippet.title }}</h2>
-            </a>
-            <strong class="text-muted"> {{ vi.snippet.publishedAt }} </strong>
-              <hr style="border-top:3px solid hotpink;" />
-            <h5 class="description-wrapper hidden-xs">
-              {{ vi.snippet.description }}
-            </h5>
+          <div class="col-sm-6 col-sm-push-6 col-xs-12">
+            <div class="page-header">
+              <!-- TITLE anchor tag. submits param(videoId), routes to details page  -->
+              <a ng-click="apiCallById(vi.contentDetails.videoId, $index)"> 
+                <h2 class="videoItemTitle">{{ vi.snippet.title }}</h2>
+              </a>
+              <strong class="text-muted">Published on {{ vi.snippet.publishedAt }}</strong>
+            </div>
+              <!-- <hr style="border-top:3px solid hotpink;" /> -->
+            <div class="page-content">  
+              <div class="description-wrapper hidden-sm">
+                <p class="itemDescription"><big>{{ vi.snippet.description }}</big></p>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-7 col-sm-pull-5 col-xs-12">
-
+          <div class="col-sm-6 col-sm-pull-6 col-xs-12">
             <!-- IMG anchor tag. submits param(videoId), routes to details page  -->
-            <a ng-click="apiCallById(vi.contentDetails.videoId)">
+            <a ng-click="apiCallById(vi.contentDetails.videoId, $index)">
               <img class="thumb-img img-responsive center-block" src="{{ vi.snippet.thumbnails.high.url }}" />
             </a>
-
           </div>
         </div>
-      </div>
+      </div> <!-- end well -->
+
     </div>
   </div>
 </div>

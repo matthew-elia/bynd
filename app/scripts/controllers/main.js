@@ -15,28 +15,31 @@ angular.module('byndApp')
       $http({
         method : 'GET',
         url : 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&maxResults=38&playlistId=PLSi28iDfECJPJYFA4wjlF5KUucFvc0qbQ&key=AIzaSyCuv_16onZRx3qHDStC-FUp__A6si-fStw'
-      }).then(function success(response) {
-      
-        console.log(response);
-        var payload = response.data;
-        var totalResults = payload.pageInfo.totalResults;
-        var resultsPerPage = payload.pageInfo.resultsPerPage;
+        }).then(function success(response) {
+          
+          // console.log(response);
 
-        $scope.videoItems = payload.items;
-        // var videoId = videoItems.contentDetails.videoId;
-        $scope.title = payload.items.title;
-        $scope.description = payload.items.description;
+          var payload = response.data;
+          var totalResults = payload.pageInfo.totalResults;
+          var resultsPerPage = payload.pageInfo.resultsPerPage;
 
-      }).then(function error(response) { 
-        console.log(response);
-      });
+          $scope.videoItems = payload.items;
+          $scope.title = payload.items.title;
+          $scope.description = payload.items.description;
+
+        }).then(function error(response) { 
+          
+          // console.log(response);
+
+        });
+      };
+
+    $scope.apiCallById = function(id, index) {
+      $location.path('/detail/'+index+'/embedKey-'+id);
     };
 
-  $scope.apiCallById = function(id) {
-     $location.path('/details/' + id);
-  };
-
-  $scope.apiCall();
+    
+    $scope.apiCall();
 
 });
 

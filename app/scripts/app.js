@@ -23,7 +23,7 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/details/:id', {
+      .when('/detail/:index/embedKey-:videoId', {
         templateUrl: 'views/detail.html',
         controller: 'DetailCtrl',
         controllerAs: 'detail'
