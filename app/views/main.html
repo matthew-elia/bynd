@@ -1,35 +1,31 @@
-<div id="MainViewWrapper" class="container-fluid">
+<div id="MainViewWrapper" class="container-fluid" ng-controller="MainCtrl">
   <div class="row">
-  
     <!-- content -->
     <div class="col-sm-10 col-sm-offset-1 col-xs-12">
-      <div class="well" ng-repeat="vi in videoItems | startFrom:currentPage*pageSize | limitTo:pageSize">
+      <div class="well" ng-repeat="vi in videoItems">
         <div class="row">
           <div class="col-sm-5 col-sm-push-7 col-xs-12">
-            <h2 class="videoItemTitle">{{ vi.snippet.title }}</h2>
-            <h6 class="text-muted"> {{ vi.snippet.publishedAt }} </h6>
-            <hr />
+
+            <!-- TITLE anchor tag. submits param(videoId), routes to details page  -->
+            <a ng-click="apiCallById(vi.contentDetails.videoId)"> 
+              <h2 class="videoItemTitle">{{ vi.snippet.title }}</h2>
+            </a>
+            <strong class="text-muted"> {{ vi.snippet.publishedAt }} </strong>
+              <hr style="border-top:3px solid hotpink;" />
             <h5 class="description-wrapper hidden-xs">
               {{ vi.snippet.description }}
             </h5>
           </div>
           <div class="col-sm-7 col-sm-pull-5 col-xs-12">
-            <img class="thumb-img img-responsive center-block" src="{{ vi.snippet.thumbnails.high.url }}" />
+
+            <!-- IMG anchor tag. submits param(videoId), routes to details page  -->
+            <a ng-click="apiCallById(vi.contentDetails.videoId)">
+              <img class="thumb-img img-responsive center-block" src="{{ vi.snippet.thumbnails.high.url }}" />
+            </a>
+
           </div>
         </div>
       </div>
     </div>
-
-  </div>
-  <div class="row text-center">
-    <button id="SlideLeftBtn" class="btn btn-outline" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" style="">
-      <span class="glyphicon glyphicon-triangle-left"></span>
-    </button>
-    
-    <h1 id="PageNumber"><strong>{{currentPage+1}}/{{numberOfPages()}}</strong></h1>
-
-    <button id="SlideRightBtn" class="btn btn-outline" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
-      <span class="glyphicon glyphicon-triangle-right"></span>
-    </button> 
   </div>
 </div>

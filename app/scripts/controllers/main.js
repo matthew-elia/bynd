@@ -9,47 +9,35 @@
  */
 
 angular.module('byndApp')
-  .controller('MainCtrl', function($http, $scope) {
-    $http({
-      method : 'GET',
-      url : 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&maxResults=38&playlistId=PLSi28iDfECJPJYFA4wjlF5KUucFvc0qbQ&key=AIzaSyCuv_16onZRx3qHDStC-FUp__A6si-fStw'
-    }).then(function success(response) {
+  .controller('MainCtrl', function($scope, $http, $location) {
+    
+    $scope.apiCall = function () {
+      $http({
+        method : 'GET',
+        url : 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&maxResults=38&playlistId=PLSi28iDfECJPJYFA4wjlF5KUucFvc0qbQ&key=AIzaSyCuv_16onZRx3qHDStC-FUp__A6si-fStw'
+      }).then(function success(response) {
       
-      console.log(response);
-      var i = 0;
-      var payload = response.data;
+        console.log(response);
+        var payload = response.data;
+        var totalResults = payload.pageInfo.totalResults;
+        var resultsPerPage = payload.pageInfo.resultsPerPage;
 
-      var totalResults = payload.pageInfo.totalResults;
-      var resultsPerPage = payload.pageInfo.resultsPerPage;
+        $scope.videoItems = payload.items;
+        // var videoId = videoItems.contentDetails.videoId;
+        $scope.title = payload.items.title;
+        $scope.description = payload.items.description;
 
-      $scope.currentPage = 0;
-      $scope.pageSize = 1;
-      $scope.data = [];
+      }).then(function error(response) { 
+        console.log(response);
+      });
+    };
 
-      $scope.numberOfPages = function() {
-          return Math.ceil($scope.data.length/$scope.pageSize);                
-      }
+  $scope.apiCallById = function(id) {
+     $location.path('/details/' + id);
+  };
 
-      for (var idx=0; idx<totalResults; idx++) {
-          $scope.data.push("item "+idx);
-      }
+  $scope.apiCall();
 
-
-      $scope.videoItems = payload.items;
-      $scope.title = payload.items.title;
-      $scope.description = payload.items.description;
-
-
-    }).then(function error(response) { 
-      console.log(response);
-      $scope.errorResponse = response.statusText;
-    });
-
-}).filter('startFrom', function() {
-    return function(input, start) {
-        start = +start; //parse to int
-        return input.slice(start);
-    }
 });
 
 //We already have a limitTo filter built-in to angular,
