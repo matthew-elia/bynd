@@ -1,15 +1,35 @@
-<div class="jumbotron" ng-repeat="x in playlist">
+<div id="MainViewWrapper" class="container-fluid">
   <div class="row">
-    <div class="col-xs-7">
-      <img class="img-responsive center-block" src="{{ x.snippet.thumbnails.high.url }}" />
+  
+    <!-- content -->
+    <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+      <div class="well" ng-repeat="vi in videoItems | startFrom:currentPage*pageSize | limitTo:pageSize">
+        <div class="row">
+          <div class="col-sm-5 col-sm-push-7 col-xs-12">
+            <h2 class="videoItemTitle">{{ vi.snippet.title }}</h2>
+            <h6 class="text-muted"> {{ vi.snippet.publishedAt }} </h6>
+            <hr />
+            <h5 class="description-wrapper hidden-xs">
+              {{ vi.snippet.description }}
+            </h5>
+          </div>
+          <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+            <img class="thumb-img img-responsive center-block" src="{{ vi.snippet.thumbnails.high.url }}" />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-5 text-left">
-      <h3>{{ x.snippet.title }}</h3>
-      <h6 class="text-muted"> {{ x.snippet.publishedAt }} </h6>
-      <hr />
-      <p class="description-wrapper">
-        {{ x.snippet.description }}
-      </p>
-    </div>
-  </div>  
-</div>   
+
+  </div>
+  <div class="row text-center">
+    <button id="SlideLeftBtn" class="btn btn-outline" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" style="">
+      <span class="glyphicon glyphicon-triangle-left"></span>
+    </button>
+    
+    <h1 id="PageNumber"><strong>{{currentPage+1}}/{{numberOfPages()}}</strong></h1>
+
+    <button id="SlideRightBtn" class="btn btn-outline" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+      <span class="glyphicon glyphicon-triangle-right"></span>
+    </button> 
+  </div>
+</div>

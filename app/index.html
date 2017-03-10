@@ -16,41 +16,17 @@
   </head>
   <body ng-app="byndApp">
 
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand text-center" href="/">bynd</a>
-          </div>
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <!-- <li class="active"><a href="#/">Home</a></li> -->
-              <!-- <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li> -->
-              <li><a ng-href="#" class="active glyphicon glyphicon-heart" style="color:red;"></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="container-fluid">
-      <div ng-view=""></div>
+      <div class="row text-center">
+        <a id="NavTitle" class="text-center" href="#">bynd</a>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div ng-view=""></div>
     </div>
 
-    <!-- <div class="footer">
-      <div class="container text-center">
-        
-      </div>
-    </div> -->
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
